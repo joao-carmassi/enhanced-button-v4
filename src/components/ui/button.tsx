@@ -56,7 +56,7 @@ const buttonVariants = cva(
         hoverUnderline:
           'relative !no-underline after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-2/3 after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300',
         gradientSlideShow:
-          'bg-[size:400%] bg-[linear-gradient(-45deg,var(--gradient-lime),var(--gradient-ocean),var(--gradient-wine),var(--gradient-rust))] animate-gradient-flow',
+          'bg-[size:400%] bg-[linear-gradient(-45deg,#a3e635,#65d26e,#38bdf8,#6366f1,#be185d,#f43f5e,#ea580c,#facc15,#a3e635)] animate-gradient-flow',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
