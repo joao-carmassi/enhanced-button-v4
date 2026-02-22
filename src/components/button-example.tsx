@@ -38,9 +38,13 @@ function ButtonExample({ button, code }: Props): React.ReactNode {
           <CodeBlockHeader className='justify-end'>
             <CodeBlockCopyButton />
           </CodeBlockHeader>
-          <CodeBlockBody className='max-h-100'>
+          <CodeBlockBody className='max-h-100 h-full'>
             {(item) => (
-              <CodeBlockItem key={item.language} value={item.language}>
+              <CodeBlockItem
+                className='h-full'
+                key={item.language}
+                value={item.language}
+              >
                 <CodeBlockContent language={item.language as BundledLanguage}>
                   {item.code}
                 </CodeBlockContent>
