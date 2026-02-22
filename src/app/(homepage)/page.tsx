@@ -1,3 +1,4 @@
+import Examples from './examples';
 import Hero from './hero';
 
 export default function Home() {
@@ -54,6 +55,7 @@ export default function Home() {
       {/* Your Content/Components */}
       <div className='relative z-10'>
         <Hero />
+        <Examples />
       </div>
     </main>
   );
