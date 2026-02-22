@@ -401,38 +401,6 @@ export const buttonExamples: ButtonExampleSection[] = [
       },
       {
         button: (
-          <Button effect='ringHover' loading>
-            Ring Hover
-          </Button>
-        ),
-        code: [
-          {
-            filename: 'Button.tsx',
-            language: 'tsx',
-            code: `<Button effect="ringHover" loading>
-  Ring Hover
-</Button>`,
-          },
-        ],
-      },
-      {
-        button: (
-          <Button effect='shine' loading>
-            Shine
-          </Button>
-        ),
-        code: [
-          {
-            filename: 'Button.tsx',
-            language: 'tsx',
-            code: `<Button effect="shine" loading>
-  Shine
-</Button>`,
-          },
-        ],
-      },
-      {
-        button: (
           <Button effect='rainbow' loading>
             Rainbow
           </Button>
