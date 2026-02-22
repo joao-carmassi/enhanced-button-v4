@@ -236,6 +236,123 @@ export const buttonExamples: ButtonExampleSection[] = [
     ],
   },
   {
+    title: 'Sizes',
+    items: [
+      {
+        button: <Button size='xs'>Extra Small</Button>,
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="xs">
+  Extra Small
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: <Button size='sm'>Small</Button>,
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="sm">
+  Small
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: <Button size='default'>Default</Button>,
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="default">
+  Default
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: <Button size='lg'>Large</Button>,
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="lg">
+  Large
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: (
+          <Button size='icon-xs'>
+            <ArrowRight />
+          </Button>
+        ),
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="icon-xs">
+  <ArrowRight />
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: (
+          <Button size='icon-sm'>
+            <ArrowRight />
+          </Button>
+        ),
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="icon-sm">
+  <ArrowRight />
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: (
+          <Button size='icon'>
+            <ArrowRight />
+          </Button>
+        ),
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="icon">
+  <ArrowRight />
+</Button>`,
+          },
+        ],
+      },
+      {
+        button: (
+          <Button size='icon-lg'>
+            <ArrowRight />
+          </Button>
+        ),
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button size="icon-lg">
+  <ArrowRight />
+</Button>`,
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Loading',
     items: [
       {
