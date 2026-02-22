@@ -27,9 +27,18 @@ const button = [
     code: `import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot, Slottable } from '@radix-ui/react-slot';
-
 import { cn } from '@/lib/utils';
 import { Spinner } from '@/components/ui/spinner';
+
+/**
+ * @author: @joao-carmassi
+ * @description: Slide Text Button with animated vertical text transition
+ * @version: 1.0.0
+ * @date: 2026-22-02
+ * @license: MIT
+ * @website: https://joao-carmassi.github.io/enhanced-button-v4/
+ * @github: https://github.com/joao-carmassi/enhanced-button-v4
+ */
 
 interface IconProps {
   icon: React.ElementType;

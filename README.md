@@ -98,7 +98,7 @@ import { ArrowRight } from 'lucide-react';
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/joao-carmassi/enhanced-button
+git clone https://github.com/joao-carmassi/enhanced-button-v4
 cd enhanced-button
 ```
 
