@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 
 import { cn } from '@/lib/utils';
+import { Spinner } from '@/components/ui/spinner';
 
 interface IconProps {
   icon: React.ElementType;
@@ -84,11 +85,13 @@ function Button({
   icon: Icon,
   iconPlacement,
   asChild = false,
+  loading = false,
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> &
   ButtonIconProps & {
     asChild?: boolean;
+    loading?: boolean;
   }) {
   const Comp = asChild ? Slot : 'button';
 
@@ -97,10 +100,15 @@ function Button({
       data-slot='button'
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, effect, size, className }))}
+      className={cn(
+        buttonVariants({ variant, effect, size, className }),
+        loading && effect === 'expandIcon' && 'gap-2',
+      )}
+      disabled={loading || props.disabled}
       {...props}
     >
-      {Icon &&
+      {!loading &&
+        Icon &&
         iconPlacement === 'left' &&
         (effect === 'expandIcon' ? (
           <div className='w-0 -translate-x-full pr-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pr-2 group-hover:opacity-100'>
@@ -110,7 +118,9 @@ function Button({
           <Icon />
         ))}
       <Slottable>{props.children}</Slottable>
-      {Icon &&
+      {loading && <Spinner />}
+      {!loading &&
+        Icon &&
         iconPlacement === 'right' &&
         (effect === 'expandIcon' ? (
           <div className='w-0 translate-x-full pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100'>
