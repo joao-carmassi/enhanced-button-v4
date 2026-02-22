@@ -233,6 +233,22 @@ export const buttonExamples: ButtonExampleSection[] = [
           },
         ],
       },
+      {
+        button: (
+          <Button effect='pulsating' variant='destructive'>
+            Pulsating
+          </Button>
+        ),
+        code: [
+          {
+            filename: 'Button.tsx',
+            language: 'tsx',
+            code: `<Button effect="pulsating" variant="destructive">
+  Pulsating
+</Button>`,
+          },
+        ],
+      },
     ],
   },
   {
