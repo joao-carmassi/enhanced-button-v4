@@ -27,3 +27,12 @@ export default function RootLayout({
     </html>
   );
 }
+
+/* 
+  * Updating button order
+  1. Button
+  2. Examples
+  3. Hero
+  4. Public
+  5. JSON
+*/
