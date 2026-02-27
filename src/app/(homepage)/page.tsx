@@ -1,5 +1,6 @@
 import Examples from './examples';
 import Hero from './hero';
+import ButtonPlayground from './playground';
 
 export default function Home() {
   return (
@@ -56,6 +57,7 @@ export default function Home() {
       <div className='relative z-10'>
         <Hero />
         <Examples />
+        <ButtonPlayground />
       </div>
     </main>
   );
