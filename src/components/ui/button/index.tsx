@@ -105,6 +105,7 @@ function Button({
     loading?: boolean;
   }) {
   const Comp = asChild ? Slot : 'button';
+  const isIconSize = size?.startsWith('icon');
 
   return (
     <Comp
@@ -128,7 +129,7 @@ function Button({
         ) : (
           <Icon />
         ))}
-      <Slottable>{props.children}</Slottable>
+      {!(loading && isIconSize) && <Slottable>{props.children}</Slottable>}
       {loading && <Spinner />}
       {!loading &&
         Icon &&
