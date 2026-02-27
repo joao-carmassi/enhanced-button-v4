@@ -175,7 +175,7 @@ export default function ButtonPlayground() {
           </p>
         </div>
 
-        <div className='flex flex-col lg:flex-row gap-8 items-center bg-muted rounded-2xl p-3 shadow-md inset-shadow-2xs'>
+        <div className='flex flex-col lg:flex-row gap-8 items-center bg-muted rounded-2xl p-3 inset-shadow-sm'>
           {/* Preview */}
           <div className='grid place-items-center w-full mt-5 lg:mt-0'>
             {(() => {
@@ -216,7 +216,7 @@ export default function ButtonPlayground() {
           </div>
 
           {/* Controls */}
-          <div className='w-full lg:w-96 shrink-0 rounded-xl bg-card p-6 space-y-5 shadow-lg inset-shadow-2xs'>
+          <div className='w-full lg:w-96 shrink-0 rounded-xl bg-card p-6 space-y-5 shadow-md inset-shadow-2xs'>
             {/* Text */}
             <div className='space-y-1.5'>
               <Label htmlFor='btn-text'>Label text</Label>
