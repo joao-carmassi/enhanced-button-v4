@@ -30,6 +30,8 @@ import {
   EyeOff,
   ChevronRight,
   ChevronLeft,
+  Copy,
+  RotateCcw,
   type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -64,14 +66,14 @@ type Effect =
   | 'pulsating'
   | 'rainbow';
 type Size =
-  | 'xs'
-  | 'sm'
-  | 'default'
-  | 'lg'
   | 'icon'
   | 'icon-xs'
   | 'icon-sm'
-  | 'icon-lg';
+  | 'icon-lg'
+  | 'xs'
+  | 'sm'
+  | 'default'
+  | 'lg';
 type IconPlacement = 'left' | 'right';
 
 const icons: { label: string; icon: LucideIcon }[] = [
@@ -114,14 +116,54 @@ export default function ButtonPlayground() {
   const [loading, setLoading] = useState(false);
   const [iconKey, setIconKey] = useState('None');
   const [iconPlacement, setIconPlacement] = useState<IconPlacement>('right');
+  const [rounded, setRounded] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const selectedIconEntry = icons.find((i) => i.label === iconKey);
   const hasIcon = iconKey !== 'None' && selectedIconEntry;
-
   const isIconOnly = ['icon', 'icon-xs', 'icon-sm', 'icon-lg'].includes(size);
 
+  function generateCode() {
+    const props: string[] = [];
+    if (variant !== 'default') props.push(`variant='${variant}'`);
+    if (effect !== 'none') props.push(`effect='${effect}'`);
+    if (size !== 'default') props.push(`size='${size}'`);
+    if (hasIcon && !isIconOnly) {
+      props.push(`icon={${iconKey.replace(/ /g, '')}}`);
+      props.push(`iconPlacement='${iconPlacement}'`);
+    }
+    if (disabled) props.push('disabled');
+    if (loading) props.push('loading');
+    if (rounded) props.push("className='rounded-full'");
+
+    const propsStr = props.length ? ' ' + props.join(' ') : '';
+    const child = isIconOnly
+      ? `\n  <${hasIcon ? iconKey.replace(/ /g, '') : 'Star'} />\n`
+      : `\n  ${text || ''}\n`;
+
+    return `<Button${propsStr}>${child}</Button>`;
+  }
+
+  function handleCopy() {
+    navigator.clipboard.writeText(generateCode());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  function handleReset() {
+    setText('Click me');
+    setVariant('default');
+    setEffect('none');
+    setSize('default');
+    setDisabled(false);
+    setLoading(false);
+    setIconKey('None');
+    setIconPlacement('right');
+    setRounded(false);
+  }
+
   return (
-    <section className='px-6 py-6 md:py-12'>
+    <section className='px-6 py-6 md:py-12 '>
       <div className='container mx-auto w-full min-w-0'>
         <div className='space-y-2 mb-8'>
           <h2 className='text-xl font-medium sm:text-4xl md:text-center'>
@@ -137,18 +179,32 @@ export default function ButtonPlayground() {
           {/* Preview */}
           <div className='grid place-items-center w-full mt-5 lg:mt-0'>
             {(() => {
-              const PreviewIcon = hasIcon ? selectedIconEntry.icon : undefined;
+              const PreviewIcon = hasIcon
+                ? selectedIconEntry.icon
+                : isIconOnly
+                  ? Star
+                  : undefined;
+              const commonProps = {
+                variant,
+                effect: effect === 'none' ? undefined : effect,
+                size,
+                disabled: disabled || loading,
+                loading,
+                className: rounded ? 'rounded-full' : undefined,
+              };
+              if (PreviewIcon && !isIconOnly) {
+                return (
+                  <Button
+                    {...commonProps}
+                    icon={PreviewIcon}
+                    iconPlacement={iconPlacement}
+                  >
+                    {text || '\u00A0'}
+                  </Button>
+                );
+              }
               return (
-                <Button
-                  variant={variant}
-                  effect={effect === 'none' ? undefined : effect}
-                  size={size}
-                  disabled={disabled}
-                  loading={loading}
-                  {...(PreviewIcon && !isIconOnly
-                    ? { icon: PreviewIcon, iconPlacement }
-                    : {})}
-                >
+                <Button {...commonProps}>
                   {isIconOnly && PreviewIcon ? (
                     <PreviewIcon />
                   ) : (
@@ -254,14 +310,14 @@ export default function ButtonPlayground() {
                 <SelectContent>
                   {(
                     [
-                      'xs',
-                      'sm',
-                      'default',
-                      'lg',
                       'icon-xs',
                       'icon-sm',
                       'icon',
                       'icon-lg',
+                      'xs',
+                      'sm',
+                      'default',
+                      'lg',
                     ] as Size[]
                   ).map((s) => (
                     <SelectItem key={s} value={s}>
@@ -330,6 +386,36 @@ export default function ButtonPlayground() {
                   Loading
                 </Label>
               </div>
+              <div className='flex items-center gap-2'>
+                <Checkbox
+                  id='btn-rounded'
+                  checked={rounded}
+                  onCheckedChange={(v) => setRounded(v === true)}
+                />
+                <Label htmlFor='btn-rounded' className='cursor-pointer'>
+                  Rounded full
+                </Label>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className='flex gap-3 pt-1'>
+              <Button
+                className='flex-1'
+                onClick={handleCopy}
+                icon={copied ? Check : Copy}
+                iconPlacement='left'
+              >
+                {copied ? 'Copied!' : 'Copy code'}
+              </Button>
+              <Button
+                variant='ghost'
+                onClick={handleReset}
+                icon={RotateCcw}
+                iconPlacement='left'
+              >
+                Reset
+              </Button>
             </div>
           </div>
         </div>
