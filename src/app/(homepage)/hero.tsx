@@ -32,7 +32,7 @@ import { useState } from 'react';
 const button = [
   {
     language: 'jsx',
-    filename: 'index.tsx',
+    filename: 'button.tsx',
     code: `import './style.css';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot, Slottable } from '@radix-ui/react-slot';
@@ -334,11 +334,10 @@ function Hero(): React.ReactNode {
 
         <Tabs defaultValue='button' className='w-full'>
           <TabsList>
-            <TabsTrigger value='button'>index.tsx</TabsTrigger>
+            <TabsTrigger value='button'>button.tsx</TabsTrigger>
             <TabsTrigger value='global'>style.css</TabsTrigger>
           </TabsList>
           <TabsContent value='button'>
-            {' '}
             <CodeBlock data={button} defaultValue={button[0].language}>
               <CodeBlockHeader>
                 <CodeBlockFiles>
